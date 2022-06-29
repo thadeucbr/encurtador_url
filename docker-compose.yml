@@ -20,26 +20,26 @@ services:
     image: node:16
     container_name: encurtador_url
     restart: unless-stopped
-    command: bash -c "npm install && npm run dev"
+    command: bash -c "yarn install && yarn run dev"
     environment:
       # API ENVS
       - API_ID=url
       - SERVER_ENV=development
       - SERVER_PORT=3333
       # TYPEORM PATHS
-      - TYPEORM_ENTITIES=./modules/**/database/typeorm/entities/*.ts
-      - TYPEORM_MIGRATIONS=./shared/database/typeorm/migrations/*.ts
-      - TYPEORM_MIGRATIONS_DIR=./shared/database/typeorm/migrations
+      - TYPEORM_ENTITIES=./src/modules/**/database/typeorm/entities/*.ts
+      - TYPEORM_MIGRATIONS=./src/shared/database/typeorm/migrations/*.ts
+      - TYPEORM_MIGRATIONS_DIR=./src/shared/database/typeorm/migrations
       # TYPEORM CONFIG
       - TYPEORM_CONNECTION=postgres
       - TYPEORM_LOGGING=false
-      - TYPEORM_SYNCHRONIZE=false
+      - TYPEORM_SYNCHRONIZE=true
       # DB ADDRESS
       - TYPEORM_HOST=pg
       - TYPEORM_PORT=5432
       - TYPEORM_USERNAME=root
       - TYPEORM_PASSWORD=development
-      - TYPEORM_DATABASE=url
+      - TYPEORM_DATABASE=devUrl
     ports:
       - 3333:3333
     volumes:
