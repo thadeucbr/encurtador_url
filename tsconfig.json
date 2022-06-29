@@ -20,6 +20,9 @@
       ],
       "@utils/*": [
         "shared/utils/*"
+      ],
+      "@typeorm/*": [
+        "shared/database/typeorm/*"
       ]
     },
     "esModuleInterop": true,
