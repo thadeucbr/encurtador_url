@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-
+import '@shared/database/typeorm';
 const app = express();
 
 app.use('/', (_req: Request, res: Response) =>
