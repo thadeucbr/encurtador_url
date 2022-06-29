@@ -6,6 +6,6 @@ const urlController = new UrlController();
 
 urlRoutes.route('/').post(urlController.create)
 
-urlRoutes.route('/:url').get(urlController.redirect)
+// urlRoutes.route('/:url').get(urlController.redirect)
 
 export default urlRoutes;
