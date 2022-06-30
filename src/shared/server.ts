@@ -12,9 +12,11 @@ const cache = new NodeCache({ stdTTL: 600 });
 
 app.use(express.json());
 
-const fileDir = path.join(__dirname, 'loaderio-0fb60c7a83935c589e418b406009d885.txt')
+const fileDir = path.join(__dirname, '../public')
 
-app.get('/loaderio-955c1c7cdcb6b4b8f3af5864076a584e', (_req, res) => res.sendFile(fileDir))
+// app.get('/', (_req, res) => res.sendFile(fileDir))
+app.use('/', express.static(fileDir))
+app.get('/', (req, res) => res.redirect('/indext.html'))
 app.get('/:url', async (request: Request, response: Response) => {
   const { url } = request.params;
 
