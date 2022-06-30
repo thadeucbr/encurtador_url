@@ -22,8 +22,8 @@ services:
       # DB ADDRESS
       - TYPEORM_HOST=localhost
       - TYPEORM_PORT=5432
-      - TYPEORM_USERNAME=root
-      - TYPEORM_PASSWORD=development
+      - TYPEORM_USERNAME=admin
+      - TYPEORM_PASSWORD=admin
       - TYPEORM_DATABASE=devUrl
     ports:
       - 3333:3333
