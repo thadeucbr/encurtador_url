@@ -34,6 +34,7 @@ app.get('/:url', async (request: Request, response: Response) => {
   return response.status(301).redirect(redirectLink);
 });
 
+app.get('/loaderio-955c1c7cdcb6b4b8f3af5864076a584e', (_req, res) => res.sendFile('loaderio-0fb60c7a83935c589e418b406009d885.txt'))
 app.use(routes);
 
 const PORT = process.env.SERVER_PORT || 3333;
