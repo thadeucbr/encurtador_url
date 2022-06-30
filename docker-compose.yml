@@ -30,7 +30,3 @@ services:
     volumes:
       - .:/usr/app/url
     working_dir: /usr/app/url
-    links:
-      - pg
-    depends_on:
-      - pg  
