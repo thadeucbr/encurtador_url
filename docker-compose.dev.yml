@@ -1,6 +1,21 @@
 version: '3.9'
 
 services:
+  pg:
+    image: postgres
+    container_name: DB_POSTGRES
+    restart: unless-stopped
+    environment:
+      - POSTGRES_PASSWORD=development
+      - POSTGRES_USER=root
+      - POSTGRES_DB=devUrl
+    logging:
+      driver: none
+    ports:
+      - 5432:5432
+    volumes:
+      - /data/PG
+  
   encurtador_url:
     image: node:16
     container_name: encurtador_url
@@ -20,7 +35,7 @@ services:
       - TYPEORM_LOGGING=false
       - TYPEORM_SYNCHRONIZE=true
       # DB ADDRESS
-      - TYPEORM_HOST=localhost
+      - TYPEORM_HOST=pg
       - TYPEORM_PORT=5432
       - TYPEORM_USERNAME=root
       - TYPEORM_PASSWORD=development
