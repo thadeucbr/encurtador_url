@@ -43,8 +43,8 @@ services:
     ports:
       - 80:80
     volumes:
-      - .:/usr/app/url
-    working_dir: /usr/app/url
+      - .:/usr/app/url1
+    working_dir: /usr/app/url1
     links:
       - pg
     depends_on:
