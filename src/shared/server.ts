@@ -39,7 +39,7 @@ app.get('/:url', async (request: Request, response: Response) => {
     
     redirectLink = originalUrl.originalUrl;
   }
-  return response.status(301).redirect(redirectLink);
+  return response.status(301).redirect(`http://${redirectLink}`);
 });
 
 app.use(routes);
