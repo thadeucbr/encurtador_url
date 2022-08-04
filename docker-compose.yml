@@ -25,40 +25,6 @@ services:
       # API ENVS
       - API_ID=url
       - SERVER_ENV=development
-      - SERVER_PORT=80
-      # TYPEORM PATHS
-      - TYPEORM_ENTITIES=./src/modules/**/database/typeorm/entities/*.ts
-      - TYPEORM_MIGRATIONS=./src/shared/database/typeorm/migrations/*.ts
-      - TYPEORM_MIGRATIONS_DIR=./src/shared/database/typeorm/migrations
-      # TYPEORM CONFIG
-      - TYPEORM_CONNECTION=postgres
-      - TYPEORM_LOGGING=false
-      - TYPEORM_SYNCHRONIZE=true
-      # DB ADDRESS
-      - TYPEORM_HOST=pg
-      - TYPEORM_PORT=5432
-      - TYPEORM_USERNAME=root
-      - TYPEORM_PASSWORD=development
-      - TYPEORM_DATABASE=devUrl
-    ports:
-      - 80:80
-    volumes:
-      - .:/usr/app/url1
-    working_dir: /usr/app/url1
-    links:
-      - pg
-    depends_on:
-      - pg
-
-  encurtador_url_ssh:
-    image: node:16
-    container_name: encurtador_url_ssh
-    restart: unless-stopped
-    command: bash -c "yarn install && yarn run dev"
-    environment:
-      # API ENVS
-      - API_ID=url
-      - SERVER_ENV=development
       - SERVER_PORT=443
       # TYPEORM PATHS
       - TYPEORM_ENTITIES=./src/modules/**/database/typeorm/entities/*.ts
@@ -77,9 +43,9 @@ services:
     ports:
       - 443:443
     volumes:
-      - .:/usr/app/url
-    working_dir: /usr/app/url
+      - .:/usr/app/url1
+    working_dir: /usr/app/url1
     links:
       - pg
     depends_on:
-      - pg  
+      - pg
