@@ -8,7 +8,7 @@ export default class UrlController {
     const service = new CreateUrlService();
     const { url } = request.body;
     const newUrl = await service.execute(url);
-    response.status(201).json({ newUrl: `http://158.101.15.97/${newUrl.shortUrl}` })
+    response.status(201).json({ newUrl: `https://short.wtf/${newUrl.shortUrl}` })
   }
 
   // async redirect(request: Request, response: Response) {
