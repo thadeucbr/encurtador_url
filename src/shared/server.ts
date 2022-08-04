@@ -4,6 +4,7 @@ import routes from './routes';
 import FindUrlService from '@modules/urlShrink/services/FindUrlService';
 import path from 'path';
 import https from 'https';
+import fs from 'fs';
 
 import express, { Request, Response } from 'express';
 import NodeCache from 'node-cache';
