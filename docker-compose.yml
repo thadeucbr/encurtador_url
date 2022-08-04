@@ -52,7 +52,7 @@ services:
 
   encurtador_url_ssh:
     image: node:16
-    container_name: encurtador_url
+    container_name: encurtador_url_ssh
     restart: unless-stopped
     command: bash -c "yarn install && yarn run dev"
     environment:
