@@ -46,14 +46,14 @@ app.use(routes);
 
 const PORT = process.env.SERVER_PORT || 3333;
 
-if(PORT === 80) {
+if(PORT === 80 || PORT === '80') {
   app.listen(PORT, () => {
     console.log(`Server running on port: ${PORT}`);
   });
 }
 else {
-  var privateKey = fs.readFileSync('/etc/letsencrypt/live/short.wtf/privkey.pem');
-  var certificate = fs.readFileSync('/etc/letsencrypt/live/short.wtf/fullchain.pem');
+  var privateKey = fs.readFileSync('/home/ubuntu/encurtador_url/key/privkey.pem');
+  var certificate = fs.readFileSync('/home/ubuntu/encurtador_url/key/fullchain.pem');
   
   https.createServer({
       key: privateKey,
