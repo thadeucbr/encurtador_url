@@ -12,3 +12,5 @@ button.addEventListener('click', async () => {
   newUrl.innerText = shortUrl.data.newUrl;
   shortUrlDiv.appendChild(newUrl)
 })
+
+axios.get('https://short.wtf/cont')

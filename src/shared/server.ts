@@ -16,9 +16,21 @@ app.use(express.json());
 
 const fileDir = path.join(__dirname, '../public')
 
-// app.get('/', (_req, res) => res.sendFile(fileDir))
-app.use('/', express.static(fileDir))
-app.get('/', (req, res) => res.redirect('/indext.html'))
+app.use(express.static(fileDir))
+app.get('/cont', (req, res) => {
+  let cont; 
+
+  try {    
+    cont = JSON.parse(fs.readFileSync('./cont.json').toString());
+    cont += 1;
+  } catch(err) {
+    cont = 1;
+  }
+
+  fs.writeFileSync('./cont.json', JSON.stringify(cont));
+  res.end();
+});
+
 app.get('/:url', async (request: Request, response: Response) => {
   const { url } = request.params;
 
