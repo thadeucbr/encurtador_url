@@ -52,8 +52,8 @@ if(PORT === 80 || PORT === '80') {
   });
 }
 else {
-  var privateKey = fs.readFileSync('/home/ubuntu/encurtador_url/key/privkey.pem');
-  var certificate = fs.readFileSync('/home/ubuntu/encurtador_url/key/fullchain.pem');
+  var privateKey = fs.readFileSync(path.join(__dirname, '..', '..', 'key', 'privkey.pem'));
+  var certificate = fs.readFileSync(path.join(__dirname, '..', '..', 'key', 'fullchain.pem'));
   
   https.createServer({
       key: privateKey,
