@@ -14,18 +14,16 @@ app.use(express.json());
 
 const fileDir = path.join(__dirname, '../public')
 
-// app.get('/', (_req, res) => res.sendFile(fileDir))
 app.use('/', express.static(fileDir))
 app.get('/', (req, res) => res.redirect('/indext.html'))
 app.get('/:url', async (request: Request, response: Response) => {
   const { url } = request.params;
-
+  
   let redirectLink: string = cache.get(url);
 
   if (redirectLink === undefined) {
     const service = new FindUrlService();
     const originalUrl = await service.execute(url);
-    
     if (!originalUrl)
       return response
         .status(301)
