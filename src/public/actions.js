@@ -2,7 +2,7 @@ const button = document.getElementById('submitButton')
 
 button.addEventListener('click', async () => { 
   const input = document.getElementById('url')
-  const shortUrl = await axios.post('http://localhost:3333', {
+  const shortUrl = await axios.post('https://short.wtf/', {
     url: input.value
   })
   const shortUrlDiv = document.getElementById('shortUrl')
