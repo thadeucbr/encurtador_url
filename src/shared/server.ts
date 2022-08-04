@@ -3,6 +3,7 @@ import 'dotenv/config';
 import routes from './routes';
 import FindUrlService from '@modules/urlShrink/services/FindUrlService';
 import path from 'path';
+import https from 'https';
 
 import express, { Request, Response } from 'express';
 import NodeCache from 'node-cache';
@@ -44,6 +45,17 @@ app.use(routes);
 
 const PORT = process.env.SERVER_PORT || 3333;
 
-app.listen(PORT, () => {
-  console.log(`Server running on port: ${PORT}`);
-});
+if(PORT === 80) {
+  app.listen(PORT, () => {
+    console.log(`Server running on port: ${PORT}`);
+  });
+}
+else {
+  var privateKey = fs.readFileSync('/etc/letsencrypt/live/short.wtf/privkey.pem');
+  var certificate = fs.readFileSync('/etc/letsencrypt/live/short.wtf/fullchain.pem');
+  
+  https.createServer({
+      key: privateKey,
+      cert: certificate
+  }, app).listen(PORT);
+}
