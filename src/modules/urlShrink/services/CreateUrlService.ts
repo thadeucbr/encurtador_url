@@ -4,6 +4,7 @@ import Joi from 'joi';
 const validateUrl = Joi.string().uri({
   scheme: ['git', /git\+https?/, 'magnetic:'],
   allowRelative: true,
+  allowQuerySquareBrackets: true
 });
 
 export default class CreateUrlService {
