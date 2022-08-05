@@ -28,6 +28,7 @@ jobs:
     steps:
       - name: AutoDeploy Request
         uses: fjogeleit/http-request-action@master
+        needs: [build]
         with:
           url: 'http://158.101.15.97:6643/shortwtf1'
           timeout: '20000'
