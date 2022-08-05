@@ -2,7 +2,7 @@ import UrlRepository from '../database/typeorm/repositories/urlRepository';
 import Joi from 'joi';
 
 const validateUrl = Joi.string().uri({
-  scheme: ['git', /git\+https?/, 'magnetic:'],
+  scheme: ['git', /git\+https?/, 'magnetic:', 'http', 'https'],
   allowRelative: true,
   allowQuerySquareBrackets: true
 });
