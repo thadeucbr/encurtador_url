@@ -14,16 +14,16 @@ const cache = new NodeCache({ stdTTL: 600 });
 
 app.use(express.json());
 
-const fileDir = path.join(__dirname, '../public')
+const fileDir = path.join(__dirname, '../public');
 
-app.use(express.static(fileDir))
+app.use(express.static(fileDir));
 app.get('/cont', (req, res) => {
-  let cont; 
+  let cont;
 
-  try {    
+  try {
     cont = JSON.parse(fs.readFileSync('./cont.json').toString());
     cont += 1;
-  } catch(err) {
+  } catch (err) {
     cont = 1;
   }
 
@@ -33,7 +33,7 @@ app.get('/cont', (req, res) => {
 
 app.get('/:url', async (request: Request, response: Response) => {
   const { url } = request.params;
-  
+
   let redirectLink: string = cache.get(url);
 
   if (redirectLink === undefined) {
@@ -47,7 +47,7 @@ app.get('/:url', async (request: Request, response: Response) => {
         );
 
     cache.set(url, originalUrl.originalUrl, 600);
-    
+
     redirectLink = originalUrl.originalUrl;
   }
   return response.status(301).redirect(`http://${redirectLink}`);
@@ -57,17 +57,17 @@ app.use(routes);
 
 const PORT = process.env.SERVER_PORT || 3333;
 
-if(PORT === 80 || PORT === '80') {
-  app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
-  });
-}
-else {
-  var privateKey = fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'privkey.pem'));
-  var certificate = fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'fullchain.pem'));
-  
-  https.createServer({
+var privateKey = fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'privkey.pem'));
+var certificate = fs.readFileSync(
+  path.join(__dirname, '..', '..', 'data', 'fullchain.pem')
+);
+
+https
+  .createServer(
+    {
       key: privateKey,
-      cert: certificate
-  }, app).listen(PORT);
-}
+      cert: certificate,
+    },
+    app
+  )
+  .listen(PORT);

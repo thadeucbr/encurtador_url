@@ -7,7 +7,7 @@ export default class UrlController {
   async create(request: Request, response: Response) {
     const service = new CreateUrlService();
     const { url } = request.body;
-    const newUrl = await service.execute(url);
+    const newUrl: any = await service.execute(url);
     response.status(201).json({ newUrl: `https://short.wtf/${newUrl.shortUrl}` })
   }
 
