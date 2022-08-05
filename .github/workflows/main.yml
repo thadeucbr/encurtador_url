@@ -1,10 +1,10 @@
 - name: AutoDeploy Request
-      uses: fjogeleit/http-request-action@master
-      with:
-        url: 'http://158.101.15.97:6643/shortwtf'
-        method: 'POST'
-        data: {
-          "repository": "https://github.com/thadeucbr/encurtador_url.git",
-            "first_time_commands": ["npm install --production", "npm run build", pm2 start npm --name "shortwtf" -- start ],
-            "commands": ["npm install --production", "pm2 restart shortwtf"]
-        }
+    uses: fjogeleit/http-request-action@master
+    with:
+      url: 'http://158.101.15.97:6643/shortwtf'
+      method: 'POST'
+      data: {
+        "repository": "https://github.com/thadeucbr/encurtador_url.git",
+          "first_time_commands": ["npm install --production", "npm run build", pm2 start npm --name "shortwtf" -- start ],
+          "commands": ["npm install --production", "pm2 restart shortwtf"]
+      }
