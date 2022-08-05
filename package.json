@@ -15,7 +15,7 @@
     "typeorm": "0.2.41"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "sudo npx tsc && sudo cp -r ./src/public/ ./build",
     "dev": "ts-node-dev -r tsconfig-paths/register --inspect --transpile-only --ignore-watch node_modules src/shared/server.ts",
     "start": "node -r ./tsconfig-paths-bootstrap.js build/shared/server.js",
     "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli.js",
