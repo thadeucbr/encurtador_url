@@ -31,6 +31,6 @@ jobs:
         with:
           url: 'http://158.101.15.97:3000/shortwtf'
           method: 'POST'
-          data: '{ "repository": "https://github.com/thadeucbr/encurtador_url.git","first_time_commands": ["npm install --production", "pm2 start npm --name "shortwtf" -- start"], "commands": ["npm install --production", "pm2 restart shortwtf"] }'
+          data: '{ "repository": "https://github.com/thadeucbr/encurtador_url.git","first_time_commands": ["npm install --production", "pm2 start npm --name \"shortwtf\" -- start"], "commands": ["npm install --production", "pm2 restart shortwtf"] }'
       - name: Show Response
         run: echo ${{ steps.deploy.outputs.response }}
