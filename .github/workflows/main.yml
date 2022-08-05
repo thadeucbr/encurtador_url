@@ -23,13 +23,18 @@ jobs:
     - name: build
       uses: icrawl/action-tsc@v1
   
-  - name: AutoDeploy Request
-    uses: fjogeleit/http-request-action@master
-    with:
-      url: 'http://yourServerIPHere:6643/nameOfApplication'
-      method: 'POST'
-      data: {
-        "repository": "repoUrlHere",
-        "first_time_commands": ["command1Here", "command2Here"],
-        "commands": ["command1Here", "command2Here"]
-      }
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: AutoDeploy Request
+        uses: fjogeleit/http-request-action@master
+        with:
+          url: 'http://yourServerIPHere:6643/nameOfApplication'
+          method: 'POST'
+          data: {
+            "repository": "repoUrlHere",
+            "first_time_commands": ["command1Here", "command2Here"],
+            "commands": ["command1Here", "command2Here"]
+          }
+      - name: Show Response
+        run: echo ${{ steps.deploy.outputs.response }}
