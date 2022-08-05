@@ -13,7 +13,9 @@ export default class CreateUrlService {
   async execute(originalUrl: string) {
     const { error } = validateUrl.validate(originalUrl);
 
-    if (error) return ' ';
+    if (error) return {
+      shortUrl: ''
+    };
 
     const urlWithouHttp = originalUrl
       .replace(/https:\/\/|http:\/\//, '')

@@ -5,10 +5,15 @@ import NodeCache from 'node-cache';
 
 export default class UrlController {
   async create(request: Request, response: Response) {
-    const service = new CreateUrlService();
-    const { url } = request.body;
-    const newUrl: any = await service.execute(url);
-    response.status(201).json({ newUrl: `https://short.wtf/${newUrl.shortUrl}` })
+    try {    
+      const service = new CreateUrlService();
+      const { url } = request.body;
+      const newUrl: any = await service.execute(url);
+      response.status(201).json({ newUrl: `https://short.wtf/${newUrl.shortUrl}` })
+    } catch(err) {
+      console.log(err);
+      response.status(500).json({ message: 'Deu ruimzão meu brother'});      
+    }
   }
 
   // async redirect(request: Request, response: Response) {
