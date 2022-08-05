@@ -60,7 +60,7 @@ const PORT = process.env.SERVER_PORT || 3333;
 var privateKey = fs.readFileSync(path.join(__dirname, '..', '..', 'data', 'privkey.pem'));
 var certificate = fs.readFileSync(
   path.join(__dirname, '..', '..', 'data', 'fullchain.pem')
-);fd
+);
 
 https
   .createServer(
