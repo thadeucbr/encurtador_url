@@ -25,10 +25,10 @@ jobs:
   
   deploy:
     runs-on: ubuntu-latest
+    needs: build
     steps:
       - name: AutoDeploy Request
-        uses: fjogeleit/http-request-action@master
-        needs: [build]
+        uses: fjogeleit/http-request-action@master        
         with:
           url: 'http://158.101.15.97:6643/shortwtf1'
           timeout: '20000'
