@@ -1,7 +1,10 @@
 import UrlRepository from '../database/typeorm/repositories/urlRepository';
 import Joi from 'joi';
 
-const validateUrl = Joi.string().uri()
+const validateUrl = Joi.string().uri({
+  scheme: ['git', /git\+https?/, 'magnetic:'],
+  allowRelative: true,
+});
 
 export default class CreateUrlService {
   private urlRepository = new UrlRepository();
@@ -9,9 +12,11 @@ export default class CreateUrlService {
   async execute(originalUrl: string) {
     const { error } = validateUrl.validate(originalUrl);
 
-    if (error) return ''; 
+    if (error) return ' ';
 
-    const urlWithouHttp = originalUrl.replace(/https:\/\/|http:\/\//, '').replace(/^www\./, '');
+    const urlWithouHttp = originalUrl
+      .replace(/https:\/\/|http:\/\//, '')
+      .replace(/^www\./, '');
     const url = await this.urlRepository.create(urlWithouHttp);
     return url;
   }
