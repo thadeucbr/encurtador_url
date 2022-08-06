@@ -19,6 +19,7 @@ button.addEventListener('click', async () => {
   /* Copy the text inside the text field */
   navigator.clipboard.writeText(input.value);
   button.type = 'hidden'
+  input.disabled = true;
   document.getElementById('openUrl').type = 'button';
 
   document.getElementById('urlmessage').value = `URL ${newUrl} copiada com sucesso`;  
